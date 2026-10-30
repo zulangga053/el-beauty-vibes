@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { business, whatsappUrl } from "../data/business";
+import { isValidBookingTime, isValidPhone } from "../utils/bookingValidation";
 
-const normalizePhone = (value: string) => {
-  const digits = value.replace(/\D/g, "");
-  if (digits.startsWith("08")) return `62${digits.slice(1)}`;
-  if (digits.startsWith("8")) return `62${digits}`;
-  if (digits.startsWith("6208")) return `62${digits.slice(3)}`;
-  return digits;
+const getLocalDate = () => {
+  const now = new Date();
+  const offset = now.getTimezoneOffset() * 60_000;
+  return new Date(now.getTime() - offset).toISOString().split("T")[0];
 };
 
 const services = [
@@ -51,15 +50,14 @@ export default function Booking() {
     e.preventDefault();
     setError("");
 
-    const phone = normalizePhone(form.phone);
-    if (!/^628\d{8,11}$/.test(phone)) {
+    if (!isValidPhone(form.phone)) {
       setError("Masukkan nomor WhatsApp Indonesia yang valid, contoh 081234567890.");
       setStatus("error");
       return;
     }
 
-    if (form.time < "09:00" || form.time > "22:00") {
-      setError("Pilih jam booking antara 09:00 dan 22:00 WITA.");
+    if (!isValidBookingTime(form.time)) {
+      setError(`Pilih jam booking antara ${business.openingTime} dan ${business.closingTime} WITA.`);
       setStatus("error");
       return;
     }
@@ -117,7 +115,7 @@ Terima kasih 🙏`;
                 icon: "📍",
                 title: "Lokasi",
                 desc: business.shortAddress,
-                sub: "(Sebelum Lampu Merah, di sebelah Agen BRI)",
+                sub: "(Depan Kampus UNSWA Kec, Punda)",
               },
               {
                 icon: "🕐",
@@ -183,6 +181,8 @@ Terima kasih 🙏`;
                 id="booking-phone"
                 type="tel"
                 name="phone"
+                inputMode="tel"
+                autoComplete="tel"
                 required
                 value={form.phone}
                 onChange={handleChange}
@@ -220,7 +220,7 @@ Terima kasih 🙏`;
                   type="date"
                   name="date"
                   required
-                  min={new Date().toISOString().split("T")[0]}
+                  min={getLocalDate()}
                   value={form.date}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-100 transition"
@@ -234,6 +234,8 @@ Terima kasih 🙏`;
                   id="booking-time"
                   type="time"
                   name="time"
+                  min={business.openingTime}
+                  max={business.closingTime}
                   required
                   value={form.time}
                   onChange={handleChange}
