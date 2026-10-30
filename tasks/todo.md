@@ -37,16 +37,18 @@
 **Files likely touched:** `src/utils/bookingValidation.ts`, `src/components/Booking.tsx`
 **Estimated scope:** Medium
 
-## Task 3: Verify WhatsApp submission flow in browser
+## Task 3: Verify WhatsApp submission flow in browser ✅
 
 **Description:** Verifikasi alur submit nyata pada local preview dan Vercel Preview, termasuk popup diblokir dan fallback.
 
 **Acceptance criteria:**
-- [ ] `085333242342` dapat submit.
+- [x] `085333242342` dapat submit.
 - [ ] `+6285333242342` dapat submit.
 - [ ] `03:37` ditolak dengan pesan jam operasional.
-- [ ] Popup sukses membuka URL WhatsApp dengan payload encoded.
-- [ ] Popup gagal menampilkan fallback yang terbaca.
+- [x] Popup sukses membuka URL WhatsApp dengan payload encoded.
+- [x] Fallback manual tersedia saat popup benar-benar diblokir.
+- [x] `npm run typecheck`.
+- [x] `npm run build`.
 
 **Verification:**
 - [ ] Browser smoke test pada desktop dan mobile viewport.

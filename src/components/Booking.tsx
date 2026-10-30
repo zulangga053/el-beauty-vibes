@@ -34,6 +34,7 @@ export default function Booking() {
   });
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [error, setError] = useState("");
+  const [fallbackUrl, setFallbackUrl] = useState("");
   const statusRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
@@ -74,9 +75,11 @@ export default function Booking() {
 
 Terima kasih 🙏`;
 
-    const popup = window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
+    const url = whatsappUrl(message);
+    setFallbackUrl(url);
+    const popup = window.open(url, "_blank", "noopener,noreferrer");
     if (!popup) {
-      setError("WhatsApp tidak dapat dibuka. Izinkan popup atau gunakan tombol WhatsApp di halaman.");
+      setError("WhatsApp tidak dapat dibuka otomatis. Gunakan tombol WhatsApp di bawah.");
       setStatus("error");
       return;
     }
@@ -268,6 +271,11 @@ Terima kasih 🙏`;
             >
               {status === "error" ? error : status === "success" ? "Booking siap dikirim via WhatsApp." : ""}
             </p>
+            {fallbackUrl && status === "error" && (
+              <a href={fallbackUrl} target="_blank" rel="noopener noreferrer" className="inline-block text-sm font-semibold text-rose-700 underline">
+                Buka WhatsApp secara manual
+              </a>
+            )}
 
             <button
               type="submit"
