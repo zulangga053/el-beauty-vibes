@@ -65,19 +65,19 @@
 - [ ] Semua acceptance criteria Task 1–3 lulus.
 - [ ] Review perubahan sebelum lanjut.
 
-## Task 4: Run responsive browser smoke test
+## Task 4: Run responsive browser smoke test ✅
 
 **Description:** Uji navigasi, menu mobile, anchor, form, logo, dan layout pada breakpoint utama.
 
 **Acceptance criteria:**
-- [ ] Tidak ada horizontal overflow.
-- [ ] Menu mobile dapat dibuka, ditutup, dan ditutup dengan `Escape`.
-- [ ] Form dapat dinavigasi keyboard.
-- [ ] Logo/fav icon terlihat jelas.
+- [x] Tidak ada horizontal overflow.
+- [x] Menu mobile dapat dibuka, ditutup, dan ditutup dengan `Escape`.
+- [x] Form dapat dinavigasi keyboard.
+- [x] Logo/fav icon terlihat jelas.
 
 **Verification:**
-- [ ] Uji 320px, 768px, 1024px, 1440px.
-- [ ] Console bersih.
+- [x] Uji 320px, 768px, 1024px, 1440px.
+- [x] Console bersih.
 
 **Dependencies:** Checkpoint Booking
 **Files likely touched:** Browser verification only; source changes jika ditemukan bug.
