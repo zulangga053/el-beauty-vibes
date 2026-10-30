@@ -1,12 +1,14 @@
 export const business = {
-  name: "Salon Beauty Vibes",
+  name: "El Beauty Salon",
   owner: "Ely Sumpiyati",
   whatsappNumber: "6285333240210",
   instagramUrl: "https://instagram.com/salonbeautyvibes__",
   email: "salonbeautyvibes@gmail.com",
-  address: "Jl. Sadia 1, Kec. Mpunda, Kota Bima, NTB",
-  shortAddress: "Jl. Sadia 1, Kec. Mpunda, Kota Bima",
+  address: "Jl. Mande 2, Kec. Mpunda, Kota Bima, NTB",
+  shortAddress: "Jl. Mande 2, Kec. Mpunda, Kota Bima",
   hours: "09:00 – 22:00 WITA",
+  openingTime: "09:00",
+  closingTime: "22:00",
   openDays: "Buka Setiap Hari",
 };
 
