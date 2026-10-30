@@ -13,6 +13,7 @@ export default function Logo({
       alt="Logo"
       width={size}
       height={size}
+      decoding="async"
       className={`rounded-full object-cover ${className}`}
     />
   );

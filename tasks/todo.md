@@ -83,15 +83,15 @@
 **Files likely touched:** Browser verification only; source changes jika ditemukan bug.
 **Estimated scope:** Medium
 
-## Task 5: Run Lighthouse/performance audit
+## Task 5: Run Lighthouse/performance audit ✅
 
 **Description:** Ukur performa, accessibility, SEO, dan best practices pada Vercel Preview.
 
 **Acceptance criteria:**
-- [ ] Tidak ada critical accessibility issue.
-- [ ] Hero image menjadi LCP candidate yang wajar.
-- [ ] Asset image compression issue dicatat.
-- [ ] Findings diberi prioritas P0/P1/P2.
+- [x] Tidak ada critical accessibility issue.
+- [x] Hero image menjadi LCP candidate yang wajar.
+- [x] Asset image compression issue dicatat.
+- [x] Findings diberi prioritas P0/P1/P2.
 
 **Verification:**
 - [ ] Lighthouse desktop/mobile.

@@ -1,11 +1,11 @@
 {
     "schema_version": 2,
-    "commit": "2e40b9cdac219b1ee628870e77a0e042ead8b5fd",
-    "indexed_at": "2026-10-26T17:22:37Z",
+    "commit": "bd4c0596bf1e721ec392e0c33bf5a3fb71e398bc",
+    "indexed_at": "2026-10-30T21:39:33Z",
     "project": "pada",
-    "nodes": 90,
-    "edges": 158,
+    "nodes": 125,
+    "edges": 221,
     "original_size": 2490368,
-    "compressed_size": 117781,
+    "compressed_size": 136232,
     "compression_level": 9
 }

@@ -12,9 +12,12 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center scale-105"
-        style={{ backgroundImage: "url(/images/hero-salon.jpg)" }}
+      <img
+        src="/images/hero-salon.jpg"
+        alt=""
+        fetchPriority="high"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover scale-105"
       />
       <div className="absolute inset-0 hero-gradient" />
 
