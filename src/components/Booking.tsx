@@ -1,4 +1,12 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { business, whatsappUrl } from "../data/business";
+import { isValidBookingTime, isValidPhone } from "../utils/bookingValidation";
+
+const getLocalDate = () => {
+  const now = new Date();
+  const offset = now.getTimezoneOffset() * 60_000;
+  return new Date(now.getTime() - offset).toISOString().split("T")[0];
+};
 
 const services = [
   "Hair Cut & Styling",
@@ -24,7 +32,13 @@ export default function Booking() {
     time: "",
     notes: "",
   });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [error, setError] = useState("");
+  const statusRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (status !== "idle") statusRef.current?.focus();
+  }, [status]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -33,12 +47,23 @@ export default function Booking() {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-  e.preventDefault();
+    e.preventDefault();
+    setError("");
 
-  const whatsappNumber = "6285333240210";
+    if (!isValidPhone(form.phone)) {
+      setError("Masukkan nomor WhatsApp Indonesia yang valid, contoh 081234567890.");
+      setStatus("error");
+      return;
+    }
 
-  const message =
-`🌸 BOOKING SALON BEAUTY VIBES 🌸
+    if (!isValidBookingTime(form.time)) {
+      setError(`Pilih jam booking antara ${business.openingTime} dan ${business.closingTime} WITA.`);
+      setStatus("error");
+      return;
+    }
+
+    const message =
+`🌸 BOOKING EL BEAUTY SALON 🌸
 
 👤 Nama: ${form.name}
 📱 No. HP: ${form.phone}
@@ -49,17 +74,9 @@ export default function Booking() {
 
 Terima kasih 🙏`;
 
-  const whatsappURL =
-    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-  window.open(whatsappURL, "_blank");
-
-  setSent(true);
-
-  setTimeout(() => {
-    setSent(false);
-  }, 4000);
-};
+    window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
+    setStatus("success");
+  };
 
   return (
     <section
@@ -91,20 +108,20 @@ Terima kasih 🙏`;
               {
                 icon: "📍",
                 title: "Lokasi",
-                desc: "Jl. Sadia 1, Kec. Mpunda, Kota Bima",
-                sub: "(Sebelum Lampu Merah, di sebelah Agen BRI)",
+                desc: business.shortAddress,
+                sub: "(Depan Kampus UNSWA Kec, Punda)",
               },
               {
                 icon: "🕐",
                 title: "Jam Operasional",
-                desc: "09:00 – 22:00 WITA",
-                sub: "Buka Setiap Hari",
+                desc: business.hours,
+                sub: business.openDays,
               },
               {
                 icon: "📱",
                 title: "Hubungi Kami",
                 desc: "DM Instagram @salonbeautyvibes__",
-                sub: "Owner: @ely_2003p",
+                sub: `Owner: ${business.owner}`,
               },
             ].map((info) => (
               <div
@@ -135,10 +152,11 @@ Terima kasih 🙏`;
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label htmlFor="booking-name" className="block text-sm font-medium text-gray-700 mb-1.5">
                 Nama Lengkap *
               </label>
               <input
+                id="booking-name"
                 type="text"
                 name="name"
                 required
@@ -150,12 +168,16 @@ Terima kasih 🙏`;
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label htmlFor="booking-phone" className="block text-sm font-medium text-gray-700 mb-1.5">
                 Nomor WhatsApp *
               </label>
               <input
+                id="booking-phone"
                 type="tel"
                 name="phone"
+                inputMode="tel"
+                autoComplete="tel"
+                pattern="(?:\+62|62|0)8[0-9]{8,11}"
                 required
                 value={form.phone}
                 onChange={handleChange}
@@ -165,10 +187,11 @@ Terima kasih 🙏`;
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label htmlFor="booking-service" className="block text-sm font-medium text-gray-700 mb-1.5">
                 Pilih Layanan *
               </label>
               <select
+                id="booking-service"
                 name="service"
                 required
                 value={form.service}
@@ -184,26 +207,30 @@ Terima kasih 🙏`;
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                <label htmlFor="booking-date" className="block text-sm font-medium text-gray-700 mb-1.5">
                   Tanggal *
                 </label>
                 <input
+                  id="booking-date"
                   type="date"
                   name="date"
                   required
-                  min={new Date().toISOString().split("T")[0]}
+                  min={getLocalDate()}
                   value={form.date}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-100 transition"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                <label htmlFor="booking-time" className="block text-sm font-medium text-gray-700 mb-1.5">
                   Jam *
                 </label>
                 <input
+                  id="booking-time"
                   type="time"
                   name="time"
+                  min={business.openingTime}
+                  max={business.closingTime}
                   required
                   value={form.time}
                   onChange={handleChange}
@@ -213,10 +240,11 @@ Terima kasih 🙏`;
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label htmlFor="booking-notes" className="block text-sm font-medium text-gray-700 mb-1.5">
                 Catatan
               </label>
               <textarea
+                id="booking-notes"
                 name="notes"
                 value={form.notes}
                 onChange={handleChange}
@@ -226,6 +254,15 @@ Terima kasih 🙏`;
               />
             </div>
 
+            <p
+              ref={statusRef}
+              tabIndex={-1}
+              role={status === "error" ? "alert" : "status"}
+              aria-live="polite"
+              className={`text-sm ${status === "error" ? "text-red-600" : "text-green-700"}`}
+            >
+              {status === "error" ? error : status === "success" ? "Booking siap dikirim via WhatsApp." : ""}
+            </p>
             <button
               type="submit"
               className="w-full btn-shine text-white font-semibold py-4 rounded-xl shadow-lg shadow-rose-500/30 flex items-center justify-center gap-2"
@@ -233,7 +270,7 @@ Terima kasih 🙏`;
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.5-.9-2.1-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.3-.1-.2-.3-.3-.5-.4zM12 2C6.5 2 2 6.5 2 12c0 1.7.4 3.3 1.2 4.7L2 22l5.3-1.2c1.4.7 2.9 1.1 4.5 1.1 5.5 0 10-4.5 10-10S17.5 2 12 2z" />
               </svg>
-              {sent ? "Terkirim! ✓" : "Kirim Booking via WhatsApp"}
+              {status === "success" ? "Terkirim! ✓" : "Kirim Booking via WhatsApp"}
             </button>
           </form>
         </div>

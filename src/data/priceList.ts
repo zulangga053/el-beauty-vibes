@@ -112,7 +112,7 @@ export const priceCategories: PriceCategory[] = [
       { name: "Tindik Pusar", price: "50.000" },
       { name: "Sulam Tahi Lalat / Titik", price: "50.000" },
       { name: "Make Up Kondangan", price: "50.000" },
-      { name: "Make Up Wisudah", price: "100.000 - 150.000" },
+      { name: "Make Up Wisuda", price: "100.000 - 150.000" },
       { name: "Rias Pengantin & Pelaminan Paketan", price: "Mulai 12 Juta" },
     ],
   },

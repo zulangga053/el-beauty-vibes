@@ -67,6 +67,8 @@ export default function Services() {
                 <img
                   src={s.image}
                   alt={s.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute top-4 right-4 w-14 h-14 bg-white/95 backdrop-blur rounded-full flex items-center justify-center text-3xl shadow-lg">

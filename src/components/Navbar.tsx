@@ -21,6 +21,18 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.body.style.overflow = open ? "hidden" : "";
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -39,7 +51,7 @@ export default function Navbar() {
                 : "bg-white text-gray-900 shadow-xl ring-2 ring-white/50"
             } group-hover:scale-105`}
           >
-            <Logo size={47} className="text-gray-900" showCircle={false} />
+            <Logo size={47} className="text-gray-900" />
           </div>
           <div className="flex flex-col leading-tight">
             <span
@@ -47,7 +59,7 @@ export default function Navbar() {
                 scrolled ? "text-gray-900" : "text-white"
               }`}
             >
-              SALON BEAUTY VIBES
+              EL BEAUTY SALON
             </span>
             <span
               className={`text-[9px] sm:text-[10px] tracking-[0.25em] uppercase italic ${
@@ -86,6 +98,7 @@ export default function Navbar() {
         <button
           onClick={() => setOpen(!open)}
           aria-label="Menu"
+          aria-expanded={open}
           className={`xl:hidden p-2 rounded-lg ${
             scrolled ? "text-gray-800" : "text-white"
           }`}

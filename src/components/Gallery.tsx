@@ -1,3 +1,5 @@
+import { business } from "../data/business";
+
 const items = [
   { src: "/images/service-makeup.jpg", title: "Bridal Makeup", cat: "Makeup" },
   { src: "/images/service-hair.jpg", title: "Hair Styling", cat: "Hair" },
@@ -20,7 +22,7 @@ export default function Gallery() {
           </h2>
           <p className="text-gray-600">
             Lihat hasil transformasi cantik dari para klien kami yang puas
-            dengan layanan Salon Beauty Vibes.
+            dengan layanan El Beauty Salon.
           </p>
         </div>
 
@@ -35,6 +37,8 @@ export default function Gallery() {
               <img
                 src={it.src}
                 alt={it.title}
+                loading="lazy"
+                decoding="async"
                 className={`w-full object-cover transition-transform duration-700 group-hover:scale-110 ${
                   i === 0 ? "h-full min-h-[400px]" : "h-56 lg:h-64"
                 }`}
@@ -53,7 +57,7 @@ export default function Gallery() {
 
         <div className="text-center mt-10">
           <a
-            href="https://instagram.com/salonbeautyvibes__"
+            href={business.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 border-2 border-rose-500 text-rose-600 font-semibold rounded-full hover:bg-rose-500 hover:text-white transition-colors"

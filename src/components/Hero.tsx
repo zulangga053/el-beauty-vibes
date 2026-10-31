@@ -1,7 +1,8 @@
+import { business } from "../data/business";
 import Logo from "./Logo";
 
 function LogoIcon() {
-  return <Logo size={110} className="text-gray-900" showCircle={false} />;
+  return <Logo size={110} className="text-gray-900" />;
 }
 
 export default function Hero() {
@@ -11,9 +12,12 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center scale-105"
-        style={{ backgroundImage: "url(/images/hero-salon.jpg)" }}
+      <img
+        src="/images/hero-salon.jpg"
+        alt=""
+        fetchPriority="high"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover scale-105"
       />
       <div className="absolute inset-0 hero-gradient" />
 
@@ -33,7 +37,7 @@ export default function Hero() {
         <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-6 animate-fade-up">
           <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
           <span className="text-xs sm:text-sm tracking-wide">
-            Buka Setiap Hari · 09:00 – 22:00 WITA
+            {business.openDays} · {business.hours}
           </span>
         </div>
 
@@ -50,7 +54,7 @@ export default function Hero() {
           className="text-base sm:text-lg lg:text-xl text-white/85 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up"
           style={{ animationDelay: "0.2s" }}
         >
-          Salon Beauty Vibes hadir di Kota Bima sebagai destinasi kecantikan
+          El Beauty Salon hadir di Kota Bima sebagai destinasi kecantikan
           terbaik. Nikmati layanan profesional dari ahlinya — mulai dari hair,
           makeup, hingga perawatan wajah.
         </p>

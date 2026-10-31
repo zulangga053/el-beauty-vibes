@@ -1,7 +1,6 @@
 interface LogoProps {
   size?: number;
   className?: string;
-  showCircle?: boolean;
 }
 
 export default function Logo({
@@ -10,10 +9,11 @@ export default function Logo({
 }: LogoProps) {
   return (
     <img
-      src="/logo.svg"
+      src="/logo-el-beauty-512.png"
       alt="Logo"
       width={size}
       height={size}
+      decoding="async"
       className={`rounded-full object-cover ${className}`}
     />
   );

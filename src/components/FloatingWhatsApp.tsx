@@ -1,7 +1,9 @@
+import { whatsappUrl } from "../data/business";
+
 export default function FloatingWhatsApp() {
   return (
     <a
-      href="https://wa.me/6285333240210?text=Halo%20Salon%20Beauty%20Vibes,%20saya%20ingin%20booking"
+      href={whatsappUrl("Halo El Beauty Salon, saya ingin booking")}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat WhatsApp"

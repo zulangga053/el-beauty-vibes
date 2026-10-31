@@ -1,3 +1,4 @@
+import { business, whatsappUrl } from "../data/business";
 import Logo from "./Logo";
 
 export default function Footer() {
@@ -11,11 +12,11 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg">
-                <Logo size={55} className="text-gray-900" showCircle={false} />
+                <Logo size={55} className="text-gray-900" />
               </div>
               <div>
                 <div className="font-display font-bold text-lg text-white leading-tight">
-                  SALON BEAUTY VIBES
+                  EL BEAUTY SALON
                 </div>
                 <div className="text-[10px] tracking-[0.3em] uppercase text-rose-300 italic">
                   by Ely Sumpiyati
@@ -28,7 +29,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               <a
-                href="https://instagram.com/salonbeautyvibes__"
+                href={business.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -39,7 +40,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://wa.me/6285333240210"
+                href={whatsappUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
@@ -50,7 +51,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="mailto:salonbeautyvibes@gmail.com"
+                href={`mailto:${business.email}`}
                 aria-label="Email"
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-rose-500 flex items-center justify-center transition-all"
               >
@@ -119,13 +120,15 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span>Jl. Sadia 1, Kec. Mpunda<br />Kota Bima, NTB</span>
+                <a href={business.mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-rose-400 transition-colors">
+                  {business.shortAddress}<br />NTB
+                </a>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-5 h-5 text-rose-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>09:00 – 22:00 WITA<br />Buka Setiap Hari</span>
+                <span>{business.hours}<br />{business.openDays}</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg className="w-5 h-5 text-rose-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
@@ -139,7 +142,7 @@ export default function Footer() {
 
         <div className="pt-6 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-3 text-sm text-gray-500">
           <div>
-            © {new Date().getFullYear()} <span className="text-rose-400 font-semibold">Salon Beauty Vibes</span>. All rights reserved.
+            © {new Date().getFullYear()} <span className="text-rose-400 font-semibold">El Beauty Salon</span>. All rights reserved.
           </div>
           <div>
             Designed with <span className="text-rose-500">♥</span> for cantik setiap hari

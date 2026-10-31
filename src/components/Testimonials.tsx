@@ -9,7 +9,7 @@ const testi = [
   {
     name: "Siti Fatimah",
     role: "Bride",
-    text: "Makeup pengantinku hasilnya cantik banget, sesuai request. Tim Beauty Vibes profesional & sabar. Terima kasih banyak!",
+    text: "Makeup pengantinku hasilnya cantik banget, sesuai request. Tim El Beauty Salon profesional & sabar. Terima kasih banyak!",
     rating: 5,
     avatar: "SF",
   },
