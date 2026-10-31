@@ -101,15 +101,16 @@
 **Files likely touched:** `public/images/*`, `index.html`, `src/index.css` jika diperlukan.
 **Estimated scope:** Medium
 
-## Task 6: Review business content and production metadata
+## Task 6: Review business content and production metadata (partial)
 
 **Description:** Finalisasi data bisnis, canonical/OG absolute URL, alamat, jam, Instagram, dan CTA Maps.
 
 **Acceptance criteria:**
 - [ ] Owner menyetujui nama/alamat/jam/nomor.
-- [ ] Canonical dan OG URL memakai domain production.
+- [ ] Canonical dan OG URL memakai domain production — menunggu domain resmi.
 - [ ] Tidak ada testimoni atau klaim yang belum terverifikasi.
 - [ ] Google Maps CTA memakai URL resmi jika tersedia.
+- [x] JSON-LD `BeautySalon` ditambahkan dengan data bisnis saat ini.
 
 **Verification:**
 - [ ] Review manual content.
