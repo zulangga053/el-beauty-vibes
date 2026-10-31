@@ -9,7 +9,7 @@ export default function Logo({
 }: LogoProps) {
   return (
     <img
-      src="/logo.svg"
+      src="/logo-el-beauty-512.png"
       alt="Logo"
       width={size}
       height={size}
