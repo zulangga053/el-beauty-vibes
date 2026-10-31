@@ -16,7 +16,7 @@ export default function Footer() {
               </div>
               <div>
                 <div className="font-display font-bold text-lg text-white leading-tight">
-                  SALON BEAUTY VIBES
+                  EL BEAUTY SALON
                 </div>
                 <div className="text-[10px] tracking-[0.3em] uppercase text-rose-300 italic">
                   by Ely Sumpiyati
@@ -142,7 +142,7 @@ export default function Footer() {
 
         <div className="pt-6 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-3 text-sm text-gray-500">
           <div>
-            © {new Date().getFullYear()} <span className="text-rose-400 font-semibold">Salon Beauty Vibes</span>. All rights reserved.
+            © {new Date().getFullYear()} <span className="text-rose-400 font-semibold">El Beauty Salon</span>. All rights reserved.
           </div>
           <div>
             Designed with <span className="text-rose-500">♥</span> for cantik setiap hari

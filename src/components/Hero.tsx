@@ -54,7 +54,7 @@ export default function Hero() {
           className="text-base sm:text-lg lg:text-xl text-white/85 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up"
           style={{ animationDelay: "0.2s" }}
         >
-          Salon Beauty Vibes hadir di Kota Bima sebagai destinasi kecantikan
+          El Beauty Salon hadir di Kota Bima sebagai destinasi kecantikan
           terbaik. Nikmati layanan profesional dari ahlinya — mulai dari hair,
           makeup, hingga perawatan wajah.
         </p>

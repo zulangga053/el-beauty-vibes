@@ -63,7 +63,7 @@ export default function Booking() {
     }
 
     const message =
-`🌸 BOOKING SALON BEAUTY VIBES 🌸
+`🌸 BOOKING EL BEAUTY SALON 🌸
 
 👤 Nama: ${form.name}
 📱 No. HP: ${form.phone}

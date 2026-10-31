@@ -59,7 +59,7 @@ export default function Navbar() {
                 scrolled ? "text-gray-900" : "text-white"
               }`}
             >
-              SALON BEAUTY VIBES
+              EL BEAUTY SALON
             </span>
             <span
               className={`text-[9px] sm:text-[10px] tracking-[0.25em] uppercase italic ${

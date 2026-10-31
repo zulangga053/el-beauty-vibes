@@ -3,7 +3,7 @@ import { whatsappUrl } from "../data/business";
 export default function FloatingWhatsApp() {
   return (
     <a
-      href={whatsappUrl("Halo Salon Beauty Vibes, saya ingin booking")}
+      href={whatsappUrl("Halo El Beauty Salon, saya ingin booking")}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat WhatsApp"

@@ -9,7 +9,7 @@ export default function About() {
           <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-rose-200/60">
             <img
               src="/images/owner.jpg"
-              alt="Owner Salon Beauty Vibes"
+              alt="Owner El Beauty Salon"
               loading="lazy"
               decoding="async"
               className="w-full h-full object-contain"
@@ -50,7 +50,7 @@ export default function About() {
             <span className="text-gradient-rose italic">Merawat Diri</span>
           </h2>
           <p className="text-gray-600 leading-relaxed mb-5">
-            <strong>Salon Beauty Vibes</strong> adalah salon kecantikan
+            <strong>El Beauty Salon</strong> adalah salon kecantikan
             profesional yang berlokasi di Jl. Sadia 1, Kecamatan Mpunda, Kota
             Bima. Kami berkomitmen memberikan pengalaman perawatan terbaik
             dengan suasana nyaman dan staf yang berpengalaman.

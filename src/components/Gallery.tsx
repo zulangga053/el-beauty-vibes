@@ -22,7 +22,7 @@ export default function Gallery() {
           </h2>
           <p className="text-gray-600">
             Lihat hasil transformasi cantik dari para klien kami yang puas
-            dengan layanan Salon Beauty Vibes.
+            dengan layanan El Beauty Salon.
           </p>
         </div>
 
