@@ -177,6 +177,7 @@ Terima kasih 🙏`;
                 name="phone"
                 inputMode="tel"
                 autoComplete="tel"
+                pattern="(?:\+62|62|0)8[0-9]{8,11}"
                 required
                 value={form.phone}
                 onChange={handleChange}

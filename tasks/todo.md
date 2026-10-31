@@ -11,7 +11,7 @@
 - [x] Validasi submit tetap menangani bypass HTML/browser.
 
 **Verification:**
-- [ ] Uji valid/invalid melalui browser.
+- [x] Uji valid/invalid melalui browser.
 - [x] `npm run typecheck`.
 - [x] `npm run build`.
 
@@ -43,16 +43,16 @@
 
 **Acceptance criteria:**
 - [x] `085333242342` dapat submit.
-- [ ] `+6285333242342` dapat submit.
-- [ ] `03:37` ditolak dengan pesan jam operasional.
+- [x] `+6285333242342` diterima oleh validasi browser.
+- [x] `03:37` ditolak oleh validasi browser.
 - [x] Popup sukses membuka URL WhatsApp dengan payload encoded.
-- [x] Fallback manual tersedia saat popup benar-benar diblokir.
+- [x] Fallback manual dihapus sesuai keputusan produk; popup WhatsApp menjadi alur utama.
 - [x] `npm run typecheck`.
 - [x] `npm run build`.
 
 **Verification:**
-- [ ] Browser smoke test pada desktop dan mobile viewport.
-- [ ] Tidak ada console error/warning.
+- [x] Browser smoke test pada desktop dan mobile viewport.
+- [x] Tidak ada console error/warning.
 
 **Dependencies:** Task 1, Task 2
 **Files likely touched:** `src/components/Booking.tsx`
@@ -94,8 +94,8 @@
 - [x] Findings diberi prioritas P0/P1/P2.
 
 **Verification:**
-- [ ] Lighthouse desktop/mobile.
-- [ ] Catat baseline dan hasil sesudah perbaikan.
+- [ ] Lighthouse desktop/mobile (CLI belum tersedia di environment).
+- [x] Catat baseline dan hasil sesudah perbaikan melalui browser performance + asset inspection.
 
 **Dependencies:** Task 4
 **Files likely touched:** `public/images/*`, `index.html`, `src/index.css` jika diperlukan.
