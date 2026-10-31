@@ -3,6 +3,8 @@ export const business = {
   owner: "Ely Sumpiyati",
   whatsappNumber: "6285333240210",
   instagramUrl: "https://instagram.com/salonbeautyvibes__",
+  mapsUrl: "https://maps.app.goo.gl/LGhJopYvY8Wznhe87",
+  websiteUrl: "https://elbeautyvibes.vercel.app/",
   email: "salonbeautyvibes@gmail.com",
   address: "Jl. Mande 2, Kec. Mpunda, Kota Bima, NTB",
   shortAddress: "Jl. Mande 2, Kec. Mpunda, Kota Bima",
