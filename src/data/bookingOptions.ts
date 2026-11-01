@@ -23,5 +23,5 @@ export type BookingOption = (typeof bookingOptions)[number];
 
 export function bookingUrl(service: string) {
   const params = new URLSearchParams({ service });
-  return `/#booking?${params.toString()}`;
+  return `/?${params.toString()}#booking`;
 }
