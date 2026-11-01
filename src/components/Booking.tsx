@@ -31,6 +31,17 @@ export default function Booking() {
     if (status !== "idle") statusRef.current?.focus();
   }, [status]);
 
+  useEffect(() => {
+    const syncRequestedService = () => {
+      const requestedService = getRequestedService();
+      if (!requestedService) return;
+      setForm((current) => current.service ? current : { ...current, service: requestedService });
+    };
+
+    window.addEventListener("hashchange", syncRequestedService);
+    return () => window.removeEventListener("hashchange", syncRequestedService);
+  }, []);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
