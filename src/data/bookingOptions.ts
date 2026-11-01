@@ -20,3 +20,8 @@ export const bookingPackages = packages.map(({ name }) => name);
 export const bookingOptions = [...bookingServices, ...bookingPackages] as const;
 
 export type BookingOption = (typeof bookingOptions)[number];
+
+export function bookingUrl(service: string) {
+  const params = new URLSearchParams({ service });
+  return `/#booking?${params.toString()}`;
+}

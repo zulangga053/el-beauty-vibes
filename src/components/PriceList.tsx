@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { priceCategories, packages, foodMenu } from "../data/priceList";
+import { bookingUrl } from "../data/bookingOptions";
 
 export default function PriceList() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
@@ -196,7 +197,7 @@ export default function PriceList() {
                   </ul>
 
                   <a
-                    href="#booking"
+                    href={bookingUrl(pkg.name)}
                     className={`block text-center text-sm font-semibold py-2.5 rounded-full transition-all ${
                       pkg.highlight
                         ? "bg-white text-rose-700 hover:bg-rose-50"

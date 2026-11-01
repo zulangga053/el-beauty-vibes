@@ -1,3 +1,5 @@
+import { bookingUrl } from "../data/bookingOptions";
+
 const services = [
   {
     icon: "💇‍♀️",
@@ -98,7 +100,7 @@ export default function Services() {
                     <div className="font-bold text-rose-600">{s.price}</div>
                   </div>
                   <a
-                    href="#booking"
+                    href={bookingUrl(s.items[0])}
                     className="px-4 py-2 bg-gradient-to-r from-rose-500 to-rose-700 text-white text-sm font-semibold rounded-full hover:shadow-lg hover:shadow-rose-500/40 transition-shadow"
                   >
                     Booking

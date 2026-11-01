@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { business, whatsappUrl } from "../data/business";
 import { isValidBookingTime, isValidPhone } from "../utils/bookingValidation";
-import { bookingPackages, bookingServices } from "../data/bookingOptions";
+import { bookingOptions, bookingPackages, bookingServices, type BookingOption } from "../data/bookingOptions";
 
 const getLocalDate = () => {
   const now = new Date();
@@ -9,11 +9,16 @@ const getLocalDate = () => {
   return new Date(now.getTime() - offset).toISOString().split("T")[0];
 };
 
+function getRequestedService() {
+  const value = new URLSearchParams(window.location.hash.split("?")[1] ?? "").get("service");
+  return bookingOptions.includes(value as BookingOption) ? value as BookingOption : "";
+}
+
 export default function Booking() {
   const [form, setForm] = useState({
     name: "",
     phone: "",
-    service: "",
+    service: getRequestedService(),
     date: "",
     time: "",
     notes: "",
