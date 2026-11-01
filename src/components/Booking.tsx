@@ -1,27 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { business, whatsappUrl } from "../data/business";
 import { isValidBookingTime, isValidPhone } from "../utils/bookingValidation";
+import { bookingPackages, bookingServices } from "../data/bookingOptions";
 
 const getLocalDate = () => {
   const now = new Date();
   const offset = now.getTimezoneOffset() * 60_000;
   return new Date(now.getTime() - offset).toISOString().split("T")[0];
 };
-
-const services = [
-  "Hair Cut & Styling",
-  "Hair Coloring",
-  "Smoothing",
-  "Creambath",
-  "Makeup Daily",
-  "Makeup Wisuda",
-  "Makeup Party",
-  "Makeup Wedding",
-  "Facial",
-  "Spa & Massage",
-  "Nail Art",
-  "Lainnya",
-];
 
 export default function Booking() {
   const [form, setForm] = useState({
@@ -199,9 +185,16 @@ Terima kasih 🙏`;
                 className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-100 transition bg-white"
               >
                 <option value="">-- Pilih layanan --</option>
-                {services.map((s) => (
-                  <option key={s}>{s}</option>
-                ))}
+                <optgroup label="Layanan">
+                  {bookingServices.map((service) => (
+                    <option key={service} value={service}>{service}</option>
+                  ))}
+                </optgroup>
+                <optgroup label="Paket Treatment">
+                  {bookingPackages.map((pkg) => (
+                    <option key={pkg} value={pkg}>{pkg}</option>
+                  ))}
+                </optgroup>
               </select>
             </div>
 
